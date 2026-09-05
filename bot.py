@@ -386,4 +386,6 @@ bot = MyBot()
 async def on_ready():
     print(f'Бот {bot.user} успешно запущен!')
 
-bot.run('MTU0NTc2NTk5MjU4MjQ3OTg3Mg.GWNIFy.AO4c0lhpukRCL1EasCGWrfVpGm8eZteDcOnmi8')
+import os
+
+bot.run(os.environ['DISCORD_TOKEN'])
