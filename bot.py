@@ -37,7 +37,7 @@ SERVERS = {
     "14": "Winslow",
     "15": "Payson",
     "16": "Show-Low",
-    "17": "Airit",  # Исправлено под реальное название сервера
+    "17": "Airit",
     "18": "Casa-Grande",
     "19": "Page",
     "20": "Sun-City",
@@ -534,13 +534,15 @@ async def on_ready():
   print(f"Бот {bot.user} успешно запущен!")
 
 
+def run_bot():
+  token = os.environ.get("DISCORD_TOKEN")
+  if not token:
+    raise ValueError("Не найден токен бота в переменных окружения DISCORD_TOKEN!")
+  bot.run(token)
+
+
 if __name__ == "__main__":
-  # Запускаем бота в фоновом потоке, а Flask оставляем главным для Render
   bot_thread = threading.Thread(target=run_bot)
   bot_thread.start()
 
   run_web()
-
-import os
-
-bot.run(os.environ['DISCORD_TOKEN'])
